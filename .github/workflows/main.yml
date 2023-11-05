@@ -24,4 +24,4 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman Collection
-      run: newman run https://api.getpostman.com/collections/30943573-8015969f-095c-4330-ad0e-5d45b7c512c6?apikey=${{ secrets.POSTMAN_API_KEY }} --folder ${{ github.event.inputs.funcionalidad }} -e https://api.getpostman.com/environments/30943573-a9815051-0a0b-4e5a-b702-225088e3fe19?apikey=${{ secrets.POSTMAN_API_KEY }}
+      run: newman run "https://api.getpostman.com/collections/30943573-8015969f-095c-4330-ad0e-5d45b7c512c6?apikey=${{ secrets.POSTMAN_API_KEY }}" --folder "${{ github.event.inputs.funcionalidad }}" -e "https://api.getpostman.com/environments/30943573-a9815051-0a0b-4e5a-b702-225088e3fe19?apikey=${{ secrets.POSTMAN_API_KEY }}"
