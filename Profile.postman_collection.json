@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "d238bc0f-cb17-4773-921e-9822047c6c2e",
+		"name": "Profile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31240954",
+		"_collection_link": "https://qa-unmsm-011223.postman.co/workspace/Team-Workspace~914a49d5-c551-4a7a-86d9-869a323ff02f/collection/27775741-d238bc0f-cb17-4773-921e-9822047c6c2e?action=share&source=collection_link&creator=31240954"
+	},
+	"item": [
+		{
+			"name": "Crear perfil",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Person\",\r\n  \"actor\": \"https://appsocial.com/jhondoe/\",\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"johndoe\",\r\n  \"hasMultimedia\": true,\r\n  \"public\": true,\r\n  \"summary\": \"Experienced web developer with a passion for responsive design and user experience.\",\r\n  \"profileImage\": \"https://example.com/images/johndoe.jpg\",\r\n  \"endpoints\": {\r\n      \"sharedInbox\": \"https://example.com/inbox/johndoe\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/crear-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"crear-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creacion del perfil Privado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Person\",\r\n  \"actor\": \"https://appsocial.com/jhondoe/\",\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"johndoe\",\r\n  \"hasMultimedia\": true,\r\n  \"public\": false,\r\n  \"summary\": \"Experienced web developer with a passion for responsive design and user experience.\",\r\n  \"profileImage\": \"https://example.com/images/johndoe.jpg\",\r\n  \"endpoints\": {\r\n      \"sharedInbox\": \"https://example.com/inbox/johndoe\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/crear-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"crear-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creacion del perfil Sin Imagen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Person\",\r\n  \"actor\": \"https://appsocial.com/jhondoe/\",\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"johndoe\",\r\n  \"hasMultimedia\": false,\r\n  \"public\": true,\r\n  \"summary\": \"Experienced web developer with a passion for responsive design and user experience.\",\r\n  \"profileImage\": \"\",\r\n  \"endpoints\": {\r\n      \"sharedInbox\": \"https://example.com/inbox/johndoe\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/crear-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"crear-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creacion del perfil Incorrecto 1 Sin Nombre",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Person\",\r\n  \"actor\": \"https://appsocial.com/jhondoe/\",\r\n  \"name\": \"\",\r\n  \"username\": \"johndoe\",\r\n  \"hasMultimedia\": false,\r\n  \"public\": true,\r\n  \"summary\": \"Experienced web developer with a passion for responsive design and user experience.\",\r\n  \"profileImage\": \"\",\r\n  \"endpoints\": {\r\n      \"sharedInbox\": \"https://example.com/inbox/johndoe\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/crear-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"crear-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creacion del perfil Incorrecto 2 Sin Biografia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Person\",\r\n  \"actor\": \"https://appsocial.com/jhondoe/\",\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"johndoe\",\r\n  \"hasMultimedia\": false,\r\n  \"public\": true,\r\n  \"summary\": \"\",\r\n  \"profileImage\": \"\",\r\n  \"endpoints\": {\r\n      \"sharedInbox\": \"https://example.com/inbox/johndoe\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/crear-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"crear-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importación del perfil",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"ImportProfile\",\r\n  \"actor\": \"https://appsocial.com/sofia/\",\r\n  \"name\": \"Perfil de Sofia\",\r\n  \"object\": {\r\n      \"id\": \"https://appsocial.com/Pepe/id1234\",\r\n      \"type\": \"Person\",\r\n      \"name\": \"Pepe Rodriguez\",\r\n      \"username\": \"PepeR\",\r\n      \"hasMultimedia\": true,\r\n      \"public\": true,\r\n      \"summary\": \"Amante de la naturaleza y entusiasta de la tecnología\",\r\n      \"profileImage\": \"https://appsocial.com/sofia/profileImage.jpg\",\r\n    \"endpoints\": {\r\n      \"sharedInbox\": \"https://appsocial.com/inbox\"\r\n    },\r\n    \"importedFrom\": \"https://mastodon.ejemplo.com/@sofiR\"\r\n  },\r\n  \"to\": \"https://appsocial.com/system/import\",\r\n  \"cc\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/importar-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"importar-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importación del perfil sin imagen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"ImportProfile\",\r\n  \"actor\": \"https://appsocial.com/sofia/\",\r\n  \"name\": \"Perfil de Sofia\",\r\n  \"object\": {\r\n      \"id\": \"https://appsocial.com/Pepe/id1234\",\r\n      \"type\": \"Person\",\r\n      \"name\": \"Pepe Rodriguez\",\r\n      \"username\": \"PepeR\",\r\n      \"hasMultimedia\": false,\r\n      \"public\": true,\r\n      \"summary\": \"Amante de la naturaleza y entusiasta de la tecnología\",\r\n      \"profileImage\": \"\",\r\n    \"endpoints\": {\r\n      \"sharedInbox\": \"https://appsocial.com/inbox\"\r\n    },\r\n    \"importedFrom\": \"https://mastodon.ejemplo.com/@sofiR\"\r\n  },\r\n  \"to\": \"https://appsocial.com/system/import\",\r\n  \"cc\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/importar-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"importar-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importación del perfil Incorrecto 1 Importar Perfil no Publico desde otro usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"ImportProfile\",\r\n    \"actor\": \"https://appsocial.com/sofia/\",\r\n    \"name\": \"Perfil de Sofia\",\r\n    \"object\": {\r\n        \"id\": \"https://appsocial.com/Pepe/id1234\",\r\n        \"type\": \"Person\",\r\n        \"name\": \"Pepe Rodriguez\",\r\n        \"username\": \"PepeR\",\r\n        \"hasMultimedia\": true,\r\n        \"public\": false,\r\n        \"summary\": \"Amante de la naturaleza y entusiasta de la tecnología.\",\r\n        \"profileImage\": \"https://appsocial.com/sofia/profileImage.jpg\",\r\n        \"endpoints\": {\r\n            \"sharedInbox\": \"https://appsocial.com/inbox\"\r\n        },\r\n        \"importedFrom\": \"https://mastodon.ejemplo.com/@sofiR\"\r\n    },\r\n    \"to\": [\"https://appsocial.com/system/import\"],\r\n    \"cc\": []\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/importar-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"importar-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importación del perfil Incorrecto 1 Importar Perfil no Publico desde otro usuario Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"ImportProfile\",\r\n    \"actor\": \"https://appsocial.com/sofia/\",\r\n    \"name\": \"Perfil de Sofia\",\r\n    \"object\": {\r\n        \"id\": \"https://appsocial.com/Pepe/id1234\",\r\n        \"type\": \"Person\",\r\n        \"name\": \"Pepe Rodriguez\",\r\n        \"username\": \"PepeR\",\r\n        \"hasMultimedia\": true,\r\n        \"public\": false,\r\n        \"summary\": \"Amante de la naturaleza y entusiasta de la tecnología.\",\r\n        \"profileImage\": \"https://appsocial.com/sofia/profileImage.jpg\",\r\n        \"endpoints\": {\r\n            \"sharedInbox\": \"https://appsocial.com/inbox\"\r\n        },\r\n        \"importedFrom\": \"https://mastodon.ejemplo.com/@sofiR\"\r\n    },\r\n    \"to\": [\"https://appsocial.com/system/import\"],\r\n    \"cc\": []\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/importar-perfil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"importar-perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un perfil para mostrarlo al usuario principal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let requestBody = pm.request.body.raw;\r",
+							"\r",
+							"pm.test(\"When: Se realiza la solicitud para recuperar el perfil del usuario\", function () {\r",
+							"  pm.expect(pm.request.method).to.equal('GET');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Then: Debe recibir el perfil del usuario como respuesta\", function () {\r",
+							"  var responseData = pm.response.json();\r",
+							"  pm.expect(responseData).to.have.property('type', 'Person');\r",
+							"  pm.expect(responseData).to.have.property('actor').that.equals('https://appsocial.com/sofia/');\r",
+							"  pm.expect(responseData).to.have.property('name', 'Sofia Rodriguez');\r",
+							"  pm.expect(responseData).to.have.property('username', 'SofiaR');\r",
+							"  pm.expect(responseData).to.have.property('hasMultimedia').that.is.true;\r",
+							"  pm.expect(responseData).to.have.property('public').that.is.true;\r",
+							"  pm.expect(responseData).to.have.property('summary').that.is.not.empty;\r",
+							"  pm.expect(responseData).to.have.property('profileImage').that.includes('https://example.com/images/sofia.jpg');\r",
+							"  pm.expect(responseData.endpoints).to.have.property('sharedInbox').that.equals('https://example.com/inbox/sofia');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia?userid=sofia",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "sofia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un perfil para mostrarlo a usuario externo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia?userid=pedro",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "pedro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar biografia",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"summary\": \"Nuevas experiencias.\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar Imagen de Perfil",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hasMultimedia\": true,\r\n    \"profileImage\": \"https://example.com/images/sofia_2.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Imagen muy pesada",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hasMultimedia\": true,\r\n    \"profileImage\": \"https://example.com/images/sofia_3.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Quitar la Imagen de Perfil",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hasMultimedia\": false,\r\n    \"profileImage\": \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar Perfil a Privado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"public\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Biografia muy extensa en la edición de perfil",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"summary\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sofia/edit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sofia",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
