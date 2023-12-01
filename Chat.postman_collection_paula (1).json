@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "56d2bbf6-fef4-478a-b601-70ff092a0daa",
+		"name": "Chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31240954",
+		"_collection_link": "https://qa-unmsm-011223.postman.co/workspace/Team-Workspace~914a49d5-c551-4a7a-86d9-869a323ff02f/collection/31239041-56d2bbf6-fef4-478a-b601-70ff092a0daa?action=share&source=collection_link&creator=31240954"
+	},
+	"item": [
+		{
+			"name": "Creacion de chat Exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Given: A valid request is provided to create a room', function () {\r",
+							"    let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    pm.expect(requestBody, 'The request must include an \\'id\\'').to.have.property('id');\r",
+							"    pm.expect(requestBody, 'The request must include a \\'name\\'').to.have.property('name');\r",
+							"    if (!requestBody.id || !requestBody.name) {\r",
+							"        pm.expect.fail('The fields \\'id\\' and \\'name\\' are necessary to create a room');\r",
+							"    } else {\r",
+							"        pm.expect(requestBody.id, 'The \\'id\\' field must be a non-empty string').to.be.a('string').and.not.equal('');\r",
+							"        pm.expect(requestBody.name, 'The \\'name\\' field must be a non-empty string').to.be.a('string').and.not.equal('');\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"pm.test('Then: The response indicates that the room was created successfully', function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    console.log(\"Complete server response:\", pm.response.text());\r",
+							"    pm.expect(responseData.message).to.eql(\"Break room created successfully\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response structure\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.have.property('message');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"room123\",\r\n  \"name\": \"General Chat Room\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-room",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creacion de chat Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Given: An invalid request is provided to create a room', function () {\r",
+							"    let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    \r",
+							"    if (!requestBody.id) {\r",
+							"        pm.expect(requestBody, 'The request must include an \\'id\\'').to.have.property('id');\r",
+							"    }\r",
+							"    if (!requestBody.name) {\r",
+							"        pm.expect(requestBody, 'The name field is required').to.have.property('name');\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"pm.test('Then: The response indicates that the room creation was unsuccessful', function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    console.log(\"Complete server response:\", pm.response.text());\r",
+							"    pm.expect(responseData.message).to.eql(\"The name field is required\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"room123\",\r\n  \"name\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-room",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Conexión con la sala con Exito",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Given: A valid request is provided to create a room', function () {\r",
+							"    let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    pm.expect(requestBody, 'The request must include an \\'id\\'').to.have.property('id');\r",
+							"    pm.expect(requestBody, 'The request must include a \\'name\\'').to.have.property('name');\r",
+							"    if (!requestBody.id || !requestBody.name) {\r",
+							"        pm.expect.fail('The fields \\'id\\' and \\'name\\' are necessary to create a room');\r",
+							"    } else {\r",
+							"        pm.expect(requestBody.id, 'The \\'id\\' field must be a non-empty string').to.be.a('string').and.not.equal('');\r",
+							"        pm.expect(requestBody.name, 'The \\'name\\' field must be a non-empty string').to.be.a('string').and.not.equal('');\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"pm.test('Then: The response indicates that the room was created successfully', function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    console.log(\"Complete server response:\", pm.response.text());\r",
+							"    pm.expect(responseData.message).to.eql(\"Break room created successfully\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response structure\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.have.property('message');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-room/join-room/1?userId=456&username=Paula",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-room",
+						"join-room",
+						"1"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "456"
+						},
+						{
+							"key": "username",
+							"value": "Paula"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Conexión con la sala con Error, falta userId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Given: An invalid request is provided to create a room', function () {\r",
+							"    let requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    \r",
+							"    if (!requestBody.id) {\r",
+							"        pm.expect(requestBody, 'The request must include an \\'id\\'').to.have.property('id');\r",
+							"    }\r",
+							"    if (!requestBody.name) {\r",
+							"        pm.expect(requestBody, 'The name field is required').to.have.property('name');\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"pm.test('Then: The response indicates that the room creation was unsuccessful', function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"    console.log(\"Complete server response:\", pm.response.text());\r",
+							"    pm.expect(responseData.message).to.eql(\"The name field is required\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-room/join-room/1?userId=&username=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-room",
+						"join-room",
+						"1"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": ""
+						},
+						{
+							"key": "username",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de chats Exitosa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"When: Se solicita la lista de chats\", function () {\r",
+							"    var requestUrl = pm.request.url.toString();\r",
+							"    pm.expect(requestUrl, \"La URL de la petición debe estar presente\").to.be.a('string');\r",
+							"    \r",
+							"    var userIdQueryParam = pm.request.url.query.get('userId');\r",
+							"    pm.expect(userIdQueryParam, \"El parámetro 'userId' en la URL no debe ser nulo\").to.not.be.null;\r",
+							"\r",
+							"    var userId = Number(userIdQueryParam);\r",
+							"    pm.expect(userId, \"El userId en la URL debe ser un número\").to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Then: La respuesta debe contener la lista de salas o un error si no hay datos\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"\r",
+							"    if (responseData && Array.isArray(responseData)) {\r",
+							"        pm.expect(responseData).to.be.an('array');\r",
+							"\r",
+							"        for (var i = 0; i < responseData.length; i++) {\r",
+							"            var room = responseData[i];\r",
+							"            pm.expect(room).to.have.property('id').that.is.a('string');\r",
+							"            pm.expect(room).to.have.property('name').that.is.a('string');\r",
+							"        }\r",
+							"    } else {\r",
+							"        pm.expect(responseData).to.have.property('statusCode', 400);\r",
+							"        pm.expect(responseData).to.have.property('message', 'Se requiere información para realizar la consulta.');\r",
+							"        pm.expect(responseData).to.have.property('errors').that.is.an('array');\r",
+							"        pm.expect(responseData.errors[0]).to.have.property('field', 'unknown');\r",
+							"        pm.expect(responseData.errors[0]).to.have.property('message', 'Se requiere información para realizar la consulta.');\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/get-rooms?user_id={{user_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get-rooms"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de chats Error - Credenciales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"When: Se solicita la lista de chats sin user_id\", function () {\r",
+							"    var requestUrl = pm.request.url.toString();\r",
+							"    pm.expect(requestUrl, \"La URL de la petición debe estar presente\").to.be.a('string');\r",
+							"    \r",
+							"    var userIdQueryParam = pm.request.url.query.get('user_id');\r",
+							"    pm.expect(userIdQueryParam, \"El parámetro 'user_id' en la URL debe ser nulo o vacío\").to.satisfy(function(val) {\r",
+							"        return val === null || val === '';\r",
+							"    });\r",
+							"\r",
+							"    // Este bloque puede ser opcional, dependiendo de si necesitas validar el tipo de 'user_id' cuando está presente\r",
+							"    if (userIdQueryParam) {\r",
+							"        var userId = Number(userIdQueryParam);\r",
+							"        pm.expect(userId, \"El user_id en la URL, cuando está presente, debe ser un número\").to.be.a('number');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Then: La respuesta debe contener un mensaje de forbidden, porque no tiene los permisos\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"\r",
+							"    // Comprueba si la respuesta tiene la propiedad 'status' con valor 'FORBIDDEN'\r",
+							"    pm.expect(responseData).to.have.property('status', 'FORBIDDEN');\r",
+							"\r",
+							"    // Comprueba si la respuesta tiene la propiedad 'message' con el mensaje adecuado\r",
+							"    pm.expect(responseData).to.have.property('message', \"You've to be authenticated to enter the rooms\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/get-rooms?user_id=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get-rooms"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista de usuarios de una sala",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"When: Se solicita la lista de usuarios de una sala\", function () {\r",
+							"    var requestUrl = pm.request.url.toString();\r",
+							"    pm.expect(requestUrl, \"La URL de la petición debe estar presente\").to.be.a('string');\r",
+							"    \r",
+							"    var userIdQueryParam = pm.request.url.query.get('userId');\r",
+							"    pm.expect(userIdQueryParam, \"El parámetro 'roomId' en la URL no debe ser nulo\").to.not.be.null;\r",
+							"\r",
+							"    var userId = Number(userIdQueryParam);\r",
+							"    pm.expect(userId, \"El roomId en la URL debe ser un número\").to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Then: La respuesta debe contener la lista de salas o un error si no hay datos\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"\r",
+							"    if (responseData && Array.isArray(responseData)) {\r",
+							"        pm.expect(responseData).to.be.an('array');\r",
+							"\r",
+							"        for (var i = 0; i < responseData.length; i++) {\r",
+							"            var room = responseData[i];\r",
+							"            pm.expect(room).to.have.property('id').that.is.a('string');\r",
+							"            pm.expect(room).to.have.property('username').that.is.a('string');\r",
+							"        }\r",
+							"    } else {\r",
+							"        pm.expect(responseData).to.have.property('statusCode', 400);\r",
+							"        pm.expect(responseData).to.have.property('message', 'Se requiere información para realizar la consulta.');\r",
+							"        pm.expect(responseData).to.have.property('errors').that.is.an('array');\r",
+							"        pm.expect(responseData.errors[0]).to.have.property('field', 'unknown');\r",
+							"        pm.expect(responseData.errors[0]).to.have.property('message', 'Se requiere información para realizar la consulta.');\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/get-clients?roomId=3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get-clients"
+					],
+					"query": [
+						{
+							"key": "roomId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Numero incorrecto de Sala",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"When: Se solicita la lista de chats sin room_id\", function () {\r",
+							"    var requestUrl = pm.request.url.toString();\r",
+							"    pm.expect(requestUrl, \"La URL de la petición debe estar presente\").to.be.a('string');\r",
+							"    \r",
+							"    var userIdQueryParam = pm.request.url.query.get('roomId');\r",
+							"    pm.expect(userIdQueryParam, \"El parámetro 'room_id' en la URL debe ser nulo o vacío\").to.satisfy(function(val) {\r",
+							"        return val === null || val === '';\r",
+							"    });\r",
+							"\r",
+							"    // Este bloque puede ser opcional, dependiendo de si necesitas validar el tipo de 'user_id' cuando está presente\r",
+							"    if (userIdQueryParam) {\r",
+							"        var userId = Number(userIdQueryParam);\r",
+							"        pm.expect(userId, \"El user_id en la URL, cuando está presente, debe ser un número\").to.be.a('number');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Then: La respuesta debe contener un mensaje de error, porque no fue una peticion correcta\", function () {\r",
+							"    var responseData = pm.response.json();\r",
+							"\r",
+							"    // Comprueba si la respuesta tiene la propiedad 'status' con valor 'FORBIDDEN'\r",
+							"    pm.expect(responseData).to.have.property('status', 'ERROR');\r",
+							"\r",
+							"    // Comprueba si la respuesta tiene la propiedad 'message' con el mensaje adecuado\r",
+							"    pm.expect(responseData).to.have.property('message', \"Unable to retrieve the list of rooms\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/get-clients?roomId=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get-clients"
+					],
+					"query": [
+						{
+							"key": "roomId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
