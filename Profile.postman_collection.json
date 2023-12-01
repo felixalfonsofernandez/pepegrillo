@@ -1,0 +1,13 @@
+{
+  "type": "Person",
+  "actor": "https://appsocial.com/jhondoe/",
+  "name": "John Doe",
+  "username": "johndoe",
+  "hasMultimedia": true,
+  "public": true,
+  "summary": "Experienced web developer with a passion for responsive design and user experience.",
+  "profileImage": "https://example.com/images/johndoe.jpg",
+  "endpoints": {
+      "sharedInbox": "https://example.com/inbox/johndoe"
+  }
+}
